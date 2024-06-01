@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evento Anual Juves 2024</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Evento Anual Juves 2024</h1>
+    <div id="countdown"></div>
+    <iframe id="playlist" src="https://www.youtube.com/embed/videoseries?list=PLdeL4yLy3K0yhm6L72wM_jC9A4v1YPQjp&autoplay=1&shuffle=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+    <script>
+        const countdownElement = document.getElementById('countdown');
+        const eventDate = new Date('June 8, 2024 00:00:00').getTime();
+
+        const updateCountdown = () => {
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+
+            if (distance < 0) {
+                countdownElement.innerHTML = '<span class="message">Hoy es el gran día!!!! Salud amigos!!!</span>';
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            countdownElement.innerHTML = `${days} days, ${hours} hours, ${minutes} mins, ${seconds} secs`;
+        };
+
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
